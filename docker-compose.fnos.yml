@@ -1,9 +1,4 @@
-# ============================================
-# Fnos 部署专用 compose 文件（最简版）
-# 用法：Fnos WebUI → Docker → Compose → 粘贴此文件
-# 路径建议：/volume1/docker/phone-site/
-# ============================================
-
+# Fnos deployment compose - with image pre-pull fallback
 services:
   phone-site:
     build:
