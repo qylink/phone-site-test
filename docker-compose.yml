@@ -1,23 +1,43 @@
 # ============================================
-# Docker Compose for 飞牛 NAS / 任意 Docker 主机
-# 使用: docker compose up -d
+# 飞牛 Fnos Docker Compose 配置
+# 使用方式（任选其一）：
+#   1) Fnos WebUI → Docker → Compose → 粘贴此文件
+#   2) SSH 到飞牛 → 放到 /volume1/docker/phone-site/ → docker compose up -d
 # ============================================
 
 services:
   phone-site:
+    # ---- 方式 A：本地构建（推荐，源码在 ./ ）----
     build:
       context: .
       dockerfile: Dockerfile
     image: phone-site:latest
     container_name: phone-site
     restart: unless-stopped
+
+    # ---- 方式 B：从镜像仓库拉取（取消下面注释，注释掉 build 段）----
+    # image: nginx:1.27-alpine  # 占位，请改为真实镜像地址
+
     ports:
-      - "8080:80"          # 主机端口:容器端口，按需修改左侧
+      # 左侧是飞牛主机端口，右侧是容器端口
+      # 8080 是建议值，避免与飞牛系统 80/443 冲突
+      - "8080:80"
+
+    # 飞牛卷路径（建议挂载到 /volume1/docker/phone-site/）
     volumes:
-      # 如需热更新静态资源，可挂载本地目录覆盖（注释默认开启）
-      # - ./:/usr/share/nginx/html:ro
-      # 日志目录（飞牛 NAS 建议挂载到 /volume1/docker/...）
+      # 静态资源热更新（修改本地文件即时生效）
+      - ./html:/usr/share/nginx/html:ro
+      # nginx 日志持久化
       - ./logs/nginx:/var/log/nginx
+
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
     networks:
       - phone-net
 

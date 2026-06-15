@@ -1,12 +1,4 @@
-.git
-.gitignore
-README.md
-Dockerfile
-docker-compose.yml
-.dockerignore
-node_modules
-.vercel
-.env*
+html/
+logs/
+node_modules/
 *.log
-.vscode
-.idea

@@ -1,0 +1,31 @@
+# ============================================
+# Fnos 部署专用 compose 文件（最简版）
+# 用法：Fnos WebUI → Docker → Compose → 粘贴此文件
+# 路径建议：/volume1/docker/phone-site/
+# ============================================
+
+services:
+  phone-site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: phone-site:latest
+    container_name: phone-site
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+      - ./logs/nginx:/var/log/nginx
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    networks:
+      - phone-net
+
+networks:
+  phone-net:
+    driver: bridge

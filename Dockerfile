@@ -9,14 +9,7 @@ FROM nginx:1.27-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # 静态资源
-COPY index.html    /usr/share/nginx/html/
-COPY product.html  /usr/share/nginx/html/
-COPY specs.html    /usr/share/nginx/html/
-COPY buy.html      /usr/share/nginx/html/
-COPY support.html  /usr/share/nginx/html/
-COPY css/          /usr/share/nginx/html/css/
-COPY js/           /usr/share/nginx/html/js/
-COPY assets/       /usr/share/nginx/html/assets/
+COPY html/  /usr/share/nginx/html/
 
 # 健康检查
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \

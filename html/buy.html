@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) - GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBHN8ZTBCF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XBHN8ZTBCF');
+  </script>
+
+  <!-- Umami Analytics -->
+  <script defer src="http://localhost:3000/script.js" data-website-id="d767fd33-8b4c-446f-88bc-324c1520ba76"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>立即购买 - Xiaomi Pro 14</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="brand">XIAOMI<span>·Pro</span></a>
+      <nav class="nav">
+        <a href="/index.html">首页</a>
+        <a href="/product.html">产品</a>
+        <a href="/specs.html">规格</a>
+        <a href="/buy.html" class="active">购买</a>
+        <a href="/support.html">支持</a>
+      </nav>
+      <div class="header-cta">
+        <a href="/support.html" class="btn btn-ghost btn-sm" data-event="header_support" data-event-cat="cta" data-event-pos="header">客服</a>
+      </div>
+    </div>
+  </header>
+
+  <section style="background:var(--gray-1);padding:60px 24px;text-align:center">
+    <div class="container">
+      <span class="eyebrow" style="color:var(--primary);font-weight:600;letter-spacing:2px">BUY NOW</span>
+      <h1 style="font-size:42px;margin:16px 0">立即预订</h1>
+      <div class="stock-status">现货供应 · 24小时内发货</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container buy-grid">
+
+      <!-- Left: product summary -->
+      <div>
+        <div class="buy-card">
+          <div style="background:var(--gray-1);height:280px;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:24px">
+            <div class="phone-mock" style="width:140px;height:280px;transform:none">
+              <div class="phone-notch" style="width:60px;height:16px;top:10px"></div>
+              <div class="phone-screen">
+                <div class="phone-logo" style="font-size:18px">XIAOMI<small style="font-size:9px">PRO 14</small></div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Xiaomi Pro 14</h3>
+          <p style="color:var(--gray-4);font-size:14px">徕卡光学 | 骁龙 8 Gen 3 | 2K LTPO 屏</p>
+
+          <div class="price" id="price-display">¥3,999</div>
+          <p style="color:var(--gray-3);font-size:12px">支持 12 期免息分期 · 月付低至 ¥333</p>
+
+          <hr style="margin:24px 0;border:none;border-top:1px solid var(--gray-2)">
+
+          <h4 style="font-size:14px;margin-bottom:12px">颜色</h4>
+          <div class="color-options" style="margin-bottom:24px">
+            <div class="color-dot active" style="background:#1a1a1a" data-color="经典黑" data-event="select_color" data-event-cat="buy" data-event-label="经典黑"></div>
+            <div class="color-dot" style="background:#f5f5f5" data-color="雪山白" data-event="select_color" data-event-cat="buy" data-event-label="雪山白"></div>
+            <div class="color-dot" style="background:#3a5a40" data-color="旷野绿" data-event="select_color" data-event-cat="buy" data-event-label="旷野绿"></div>
+            <div class="color-dot" style="background:#7a8b99" data-color="岩石青" data-event="select_color" data-event-cat="buy" data-event-label="岩石青"></div>
+          </div>
+
+          <h4 style="font-size:14px;margin-bottom:12px">套餐</h4>
+          <ul style="font-size:13px;color:var(--gray-4)">
+            <li style="padding:6px 0">🎁 官方标配 - ¥0</li>
+            <li style="padding:6px 0">🎁 +199 元换购碎屏险（一年）</li>
+            <li style="padding:6px 0">🎁 +99 元换购保护壳</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: order form -->
+      <div>
+        <div class="buy-card">
+          <h3>填写订单信息</h3>
+          <p style="color:var(--gray-4);font-size:13px;margin-bottom:24px">请准确填写以下信息，确保顺利发货</p>
+
+          <form id="buy-form">
+            <div class="form-row">
+              <label>内存版本</label>
+              <select name="variant" data-event="select_variant" data-event-cat="buy">
+                <option value="8">8GB + 256GB - ¥3,999</option>
+                <option value="12" selected>12GB + 256GB - ¥4,499</option>
+                <option value="16">16GB + 512GB - ¥4,999</option>
+              </select>
+            </div>
+
+            <input type="hidden" name="color" value="经典黑">
+
+            <div class="form-row">
+              <label>购买数量</label>
+              <select name="quantity" data-event="select_quantity" data-event-cat="buy">
+                <option value="1">1 台</option>
+                <option value="2">2 台</option>
+                <option value="3">3 台</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label>姓名</label>
+              <input type="text" name="name" placeholder="请输入收货人姓名" required
+                     data-event="form_input" data-event-cat="form" data-event-label="姓名">
+            </div>
+
+            <div class="form-row">
+              <label>手机号</label>
+              <input type="tel" name="phone" placeholder="11位手机号码" pattern="[0-9]{11}" required
+                     data-event="form_input" data-event-cat="form" data-event-label="手机号">
+            </div>
+
+            <div class="form-row">
+              <label>收货地址</label>
+              <input type="text" name="address" placeholder="省/市/区/详细地址" required
+                     data-event="form_input" data-event-cat="form" data-event-label="地址">
+            </div>
+
+            <div class="form-row">
+              <label>支付方式</label>
+              <select name="payment" data-event="select_payment" data-event-cat="buy">
+                <option value="wechat">微信支付</option>
+                <option value="alipay">支付宝</option>
+                <option value="card">银行卡分期</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block"
+                    data-event="submit_order" data-event-cat="conversion" data-event-value="4499">
+              立即提交订单
+            </button>
+            <p style="text-align:center;color:var(--gray-3);font-size:12px;margin-top:12px">
+              提交即表示同意 <a href="#" style="color:var(--primary)" data-event="view_terms" data-event-cat="legal">《用户协议》</a>
+            </p>
+          </form>
+        </div>
+
+        <div style="margin-top:24px;padding:20px;background:var(--gray-1);border-radius:6px;font-size:13px;color:var(--gray-4)">
+          <strong style="color:var(--dark)">🛡 保障：</strong> 7天无理由退货 · 15天换货 · 一年质保
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 style="color:var(--primary);font-size:18px">XIAOMI</h4>
+        <p style="color:#888">让全球每个人都能享受科技带来的美好生活。</p>
+      </div>
+      <div class="footer-col">
+        <h4>产品</h4>
+        <a href="/product.html">产品介绍</a>
+        <a href="/specs.html">规格参数</a>
+        <a href="/buy.html">立即购买</a>
+      </div>
+      <div class="footer-col">
+        <h4>支持</h4>
+        <a href="/support.html">售后服务</a>
+        <a href="/support.html">常见问题</a>
+      </div>
+      <div class="footer-col">
+        <h4>关于</h4>
+        <a href="#">关于小米</a>
+        <a href="#">联系我们</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Xiaomi Inc.</span>
+      <span>v1.0.0 · 埋码测试版</span>
+    </div>
+  </footer>
+
+  <script src="/js/tracker.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
