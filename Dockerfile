@@ -1,17 +1,17 @@
-# ===========================================
-# Multi-stage build for static site
-# Stage 1: build (none needed - static files)
-# Stage 2: serve via nginx alpine
-# ===========================================
+# Xiaomi Pro 14 static site - nginx alpine image
+# Stage 1: build (no-op, static files)
+# Stage 2: serve via nginx:1.27-alpine
 FROM nginx:1.27-alpine
 
-# 替换默认配置
+LABEL maintainer="qylink"
+
+# Replace default nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# 静态资源
+# Static site files (html/, css/, js/)
 COPY html/  /usr/share/nginx/html/
 
-# 健康检查
+# Health check
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
   CMD wget -q --spider http://localhost/ || exit 1
 
