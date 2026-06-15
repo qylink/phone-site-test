@@ -2,3 +2,13 @@ html/
 logs/
 node_modules/
 *.log
+docker-compose.yml
+docker-compose.fnos.yml
+DEPLOY-FNOS.md
+DEPLOY-HTTP.md
+README.md
+Caddyfile
+nginx.conf
+Dockerfile
+.git
+.gitignore

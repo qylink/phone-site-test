@@ -1,4 +1,4 @@
-# Fnos deployment compose - with image pre-pull fallback
+# Fnos deployment compose - Caddy
 services:
   phone-site:
     build:
@@ -10,8 +10,8 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./html:/usr/share/nginx/html:ro
-      - ./logs/nginx:/var/log/nginx
+      - ./html:/usr/share/caddy:ro
+      - ./logs/caddy:/var/log/caddy
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
       interval: 30s

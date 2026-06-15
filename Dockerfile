@@ -1,15 +1,14 @@
-# Xiaomi Pro 14 static site - nginx alpine
-# Use generic tag (more likely to be cached on Fnos mirror)
-FROM nginx:alpine
+# Xiaomi Pro 14 static site - Caddy
+FROM caddy:2-alpine
 
 LABEL maintainer="qylink"
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY html/  /usr/share/nginx/html/
+# Copy Caddy config
+COPY Caddyfile /etc/caddy/Caddyfile
 
-HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
-  CMD wget -q --spider http://localhost/ || exit 1
+# Copy static site files
+COPY html/  /usr/share/caddy/
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]

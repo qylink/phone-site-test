@@ -1,0 +1,12 @@
+# 如果 Caddy 也 401，换成 httpd
+# 用法：重命名此文件为 Dockerfile
+FROM httpd:2.4-alpine
+
+LABEL maintainer="qylink"
+
+# Copy static site files
+COPY html/  /usr/local/apache2/htdocs/
+
+EXPOSE 80
+
+CMD ["httpd-foreground"]
