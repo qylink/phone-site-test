@@ -91,5 +91,36 @@ phone-site/
 ├── js/tracker.js   ← 埋码 SDK
 ├── js/main.js      ← UI 交互
 ├── vercel.json
+├── Dockerfile      ← Docker 镜像构建
+├── nginx.conf      ← nginx 配置
+├── docker-compose.yml
 └── README.md
 ```
+
+## Docker 部署（飞牛 NAS / 任意主机）
+
+### 方式 A：docker compose（推荐）
+```bash
+git clone https://github.com/qylink/phone-site-test.git
+cd phone-site-test
+docker compose up -d
+```
+访问 `http://NAS_IP:8080`
+
+### 方式 B：飞牛 NAS 控制台
+1. 镜像 → 添加镜像 → 远程仓库
+   - 仓库：`nginx:1.27-alpine`（或自行 build 后 push）
+2. 容器 → 创建容器
+   - 端口映射：主机 `8080` → 容器 `80`
+   - 路径：建议挂载 `./css ./js ./*.html` 到 `/usr/share/nginx/html/`（只读）
+
+### 方式 C：本地 build 后导入
+```bash
+docker build -t phone-site:latest .
+docker save phone-site:latest > phone-site.tar
+# 把 tar 文件传到飞牛后：镜像 → 导入 → 选择文件
+docker run -d --name phone-site -p 8080:80 --restart unless-stopped phone-site:latest
+```
+
+### 自定义端口
+修改 `docker-compose.yml` 中 `"8080:80"` 左侧端口即可。
