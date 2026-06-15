@@ -1,0 +1,26 @@
+# ============================================
+# Docker Compose for 飞牛 NAS / 任意 Docker 主机
+# 使用: docker compose up -d
+# ============================================
+
+services:
+  phone-site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: phone-site:latest
+    container_name: phone-site
+    restart: unless-stopped
+    ports:
+      - "8080:80"          # 主机端口:容器端口，按需修改左侧
+    volumes:
+      # 如需热更新静态资源，可挂载本地目录覆盖（注释默认开启）
+      # - ./:/usr/share/nginx/html:ro
+      # 日志目录（飞牛 NAS 建议挂载到 /volume1/docker/...）
+      - ./logs/nginx:/var/log/nginx
+    networks:
+      - phone-net
+
+networks:
+  phone-net:
+    driver: bridge
